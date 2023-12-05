@@ -3,26 +3,36 @@ const quizTypeBtns = document.querySelectorAll('.quiz-type-btn');
 const quizBtnsArr = [...quizTypeBtns]; 
 const quizTitle = document.querySelector('#title');
 const mainPage = document.querySelector('#main-page-container');
-let p = document.createElement('p');
-let img = document.createElement('img');
+const p = document.createElement('p');
+const img = document.createElement('img');
+// questions 
+const questionTitle = document.querySelector('.question');
+const optionButtons = document.querySelectorAll('.option');
 
-async function quiz() {
+async function renderJson() {
     const response = await fetch("data.json");
     const quizData = await response.json();
-    displayQuizType(quizData);
+    quizPage(quizData);
     renderJsonData(quizData);
-}
-quiz();
+    quizQuestions(quizData);
 
-function displayQuizType(jsonData) {
+}
+renderJson();
+
+function quizPage(jsonData) {
     quizBtnsArr.map(function(btn) {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
             quizTitle.innerHTML = btn.innerHTML;
             mainPage.style.display = "none";
+            // if html, show html questions 
         });
     });
 };
+
+function quizQuestions(jsonData) {
+    // const { quizzes } = jsonData;
+}
 
 // use this function to display all the correct data 
 function renderJsonData(jsonData) {
