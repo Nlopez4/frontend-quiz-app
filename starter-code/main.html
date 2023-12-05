@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Frontend Mentor | Frontend quiz app</title>
+</head>
+<body>
+
+<main>
+  <section id="main-page-container">
+    <div id="left">
+      <h1> Welcome to the Frontend Quiz!</h1>
+      <h2>Pick a subject to get started.</h2>
+    </div>
+    
+    <div id="right">
+      <form id="right">
+        <button type="submit" formaction="#html-quiz" value="html" class="quiz-type-btn">HTML</button>
+        <button type="submit" formaction="#css-quiz" value="css" class="quiz-type-btn">CSS</button>
+        <button type="submit" formaction="#javascript-quiz" value="javascript" class="quiz-type-btn">JavaScript</button>
+        <button type="submit" formaction="#access-quiz" value="access" class="quiz-type-btn">Accessibility</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="html-quiz" class="quiz-page">
+    <div>
+      <h1 id="title"></h1>
+    </div>
+  </section>
+
+  <section id="css-quiz" class="quiz-page">
+    <h1 id="title"></h1>
+  </section>
+
+  <section id="javascript-quiz" class="quiz-page">
+    <h1 id="title"></h1>
+  </section>
+
+  <section id="access-quiz" class="quiz-page">
+    <h1 id="title"></h1>
+  </section>
+</main>
+
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
