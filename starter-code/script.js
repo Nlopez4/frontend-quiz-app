@@ -8,6 +8,7 @@ const img = document.createElement('img');
 // questions 
 let questionTitle = document.querySelector('.question');
 const optionButtons = document.querySelectorAll('.option');
+const quizContainer = document.querySelector('#quiz-container');
 
 async function renderJson() {
     const response = await fetch("data.json");
@@ -20,8 +21,23 @@ renderJson();
 
 function quizType(jsonData){
     const {quizzes} = jsonData;
+    //html
     const htmlQuestionsArr = quizzes[0].questions;
     const questionIndex = 0;
+    const optionsArr = htmlQuestionsArr[questionIndex].options
+
+    function htmlOptions(){
+        for (let option of optionsArr) {
+            const optionButton = document.createElement('button');
+            optionButton.textContent = option;
+            optionButton.value = option;
+            optionButton.name = option;
+            optionButton.addEventListener('click', function(){
+                console.log('clicked')
+            });
+            quizContainer.appendChild(optionButton);
+        }
+    }
     
     quizBtnsArr.forEach(function(btn) {
         btn.addEventListener('click', function(e) {
@@ -29,8 +45,7 @@ function quizType(jsonData){
             // html button display html questions
             if (btn.value === 'html') {
                 questionTitle.innerHTML = JSON.stringify(htmlQuestionsArr[questionIndex].question)
-
-                // display all options in buttons
+                htmlOptions();
             } else {
                 return;
             }
