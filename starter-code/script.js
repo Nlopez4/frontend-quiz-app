@@ -25,6 +25,17 @@ function quizType(jsonData){
     const htmlQuestionsArr = quizzes[0].questions;
     const questionIndex = 0;
     const optionsArr = htmlQuestionsArr[questionIndex].options
+    const correctAnswer = htmlQuestionsArr[questionIndex].answer;
+
+    function buttonHandler(e){
+        if (e.target.value === correctAnswer){
+            e.target.classList.add("correct");
+            e.target.style.backgroundColor = 'green';
+        } else {
+            e.target.classList.add("incorrect");
+            e.target.style.backgroundColor = 'red';
+        }
+    }
 
     function htmlOptions(){
         for (let option of optionsArr) {
@@ -32,10 +43,9 @@ function quizType(jsonData){
             optionButton.textContent = option;
             optionButton.value = option;
             optionButton.name = option;
-            optionButton.addEventListener('click', function(){
-                console.log('clicked')
-            });
+            optionButton.addEventListener('click', buttonHandler);
             quizContainer.appendChild(optionButton);
+            
         }
     }
     
