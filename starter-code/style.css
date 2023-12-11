@@ -16,7 +16,7 @@
 /* .quiz-page {
     display: none;
 } */
-.quiz-page:target {
+.quiz-section:target {
     display: block;
 }
 #options {
