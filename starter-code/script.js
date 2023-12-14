@@ -23,7 +23,7 @@ function quizType(jsonData){
     const {quizzes} = jsonData;
     //html
     const htmlQuestionsArr = quizzes[0].questions;
-    const questionIndex = 0;
+    let questionIndex = 0;
     const optionsArr = htmlQuestionsArr[questionIndex].options
     const correctAnswer = htmlQuestionsArr[questionIndex].answer;
 
@@ -45,8 +45,23 @@ function quizType(jsonData){
             optionButton.name = option;
             optionButton.addEventListener('click', buttonHandler);
             quizContainer.appendChild(optionButton);
-            
         }
+        // if a user clicks their answer, click the submit button 
+        const submit = document.createElement('button');
+        submit.textContent = 'submit';
+        submit.value = 'submit';
+        submit.type = 'submit';
+        quizContainer.appendChild(submit);
+        submit.addEventListener('click', function(e){
+            e.preventDefault();
+            console.log('submitted')
+            // when clicked submit, go to next question
+            if(htmlQuestionsArr.length > questionIndex -1){
+                questionIndex++;
+            } else {
+                console.log('quiz completed')
+            }
+        })
     }
     
     quizBtnsArr.forEach(function(btn) {

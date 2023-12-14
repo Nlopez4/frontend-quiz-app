@@ -26,3 +26,8 @@
     width: 250px;
     padding: 0;
 }
+#quiz-container {
+    display: flex;
+    flex-direction: column;
+    width: 300px
+}
